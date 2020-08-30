@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\AudioSettings.cs" />
     <Compile Include="Assets\Scripts\BackBarrier.cs" />
     <Compile Include="Assets\Scripts\ButtonMenu.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -71,9 +72,11 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\OldShipController.cs" />
+    <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Ship.cs" />
     <Compile Include="Assets\Scripts\TriggerLoad.cs" />
+    <Compile Include="Assets\Scripts\TutorialMenu.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/CF/GBJAM 8/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -8,10 +8,29 @@ public class ButtonMenu : MonoBehaviour
 
     int index = 0;
     int totalOptions = 3;
-    public float yMovement;
+    float yMovement;
+
+    private void Start()
+    {
+        yMovement = (.1f * Screen.height + 2f);
+    }
 
     void Update()
     {
+        /*
+        if (Input.GetKeyDown(KeyCode.DownArrow) && index < totalOptions - 1)
+        {
+            FindObjectOfType<AudioManager>().Play("Sails");
+            index++;
+            transform.position = new Vector2(transform.position.x, transform.position.y - yMovement);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) && index > 0)
+        {
+            FindObjectOfType<AudioManager>().Play("Sails");
+            index--;
+            transform.position = new Vector2(transform.position.x, transform.position.y + yMovement);
+        }
+        */
         if (Input.GetKeyDown(KeyCode.DownArrow) && index < totalOptions - 1)
         {
             FindObjectOfType<AudioManager>().Play("Sails");
@@ -33,7 +52,7 @@ public class ButtonMenu : MonoBehaviour
                     SceneManager.LoadScene("MainGame");
                     break;
                 case 1:
-                    SceneManager.LoadScene("Tutorial");
+                    SceneManager.LoadScene("Tutorials");
                     break;
                 case 2:
                     SceneManager.LoadScene("Options");
@@ -42,6 +61,11 @@ public class ButtonMenu : MonoBehaviour
                     return;
 
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 
     }

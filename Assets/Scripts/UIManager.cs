@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     TimeSpan timeSpan;
 
     public GameObject gameOverScreen;
+    public GameObject pause;
     public Text timeText;
     public bool isEnabled = true;
 
@@ -71,6 +72,14 @@ public class UIManager : MonoBehaviour
         gameOverScreen.transform.Find("SailText").gameObject.SetActive(true);
         gameOverScreen.transform.Find("TimeSailedText").gameObject.SetActive(true);
         gameOverScreen.transform.Find("TimeSailedText").GetComponent<Text>().text = timeText.text;
+    }
+
+    public void Pause(bool isPaused)
+    {
+        if (isPaused)
+            pause.SetActive(false);
+        else
+            pause.SetActive(true);
     }
 
 }

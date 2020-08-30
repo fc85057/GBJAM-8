@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     Ship ship;
     List<GameObject> backgrounds;
+    bool isPaused;
 
     void Start()
     {
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
         if (ship.health <= 0)
         {
             StartCoroutine(GameOver());
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
         }
     }
 
@@ -58,6 +63,23 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void Pause()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1f;
+            FindObjectOfType<UIManager>().Pause(isPaused);
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            FindObjectOfType<UIManager>().Pause(isPaused);
+            isPaused = true;
+        }
+        
     }
 
 }
