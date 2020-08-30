@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
+    Ship ship;
     List<GameObject> backgrounds;
 
     void Start()
     {
         backgrounds = new List<GameObject>();
+        ship = GameObject.FindWithTag("Player").GetComponent<Ship>();
     }
 
     void Update()
@@ -22,11 +25,39 @@ public class GameManager : MonoBehaviour
             Destroy(toRemove);
             // backgrounds[0].gameObject.SetActive(false);
         }
+        if (ship.health <= 0)
+        {
+            StartCoroutine(GameOver());
+        }
     }
 
     public void AddBackground(GameObject background)
     {
         backgrounds.Add(background);
+    }
+
+    /*
+    void GameOver()
+    {
+        Camera.main.GetComponent<CameraController>().enabled = false;
+        GameObject.Find("Barriers").GetComponent<CameraController>().enabled = false;
+        FindObjectOfType<UIManager>().isEnabled = false;
+        FindObjectOfType<UIManager>().GameOver();
+        ship.enabled = false;
+    }
+    */
+
+    IEnumerator GameOver()
+    {
+        Camera.main.GetComponent<CameraController>().enabled = false;
+        GameObject.Find("Barriers").GetComponent<CameraController>().enabled = false;
+        FindObjectOfType<UIManager>().isEnabled = false;
+        FindObjectOfType<UIManager>().GameOver();
+        ship.enabled = false;
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

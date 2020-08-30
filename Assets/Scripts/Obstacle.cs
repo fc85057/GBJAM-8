@@ -20,6 +20,11 @@ public class Obstacle : MonoBehaviour
         {
             collision.GetComponent<Ship>().TakeDamage(1);
         }
+        else if (collision.tag == "Projectile")
+        {
+            FindObjectOfType<AudioManager>().Play("Impact");
+            Destroy(collision.gameObject);
+        }
     }
 
 }

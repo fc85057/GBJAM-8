@@ -9,12 +9,15 @@ public class UIManager : MonoBehaviour
 
     Ship ship;
     GameObject hud;
+
     int health = 3;
 
     float timeElapsed;
     TimeSpan timeSpan;
 
+    public GameObject gameOverScreen;
     public Text timeText;
+    public bool isEnabled = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,10 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 
-        UpdateTime();
+        if (isEnabled)
+        {
+            UpdateTime();
+        }
 
         if (health != ship.health)
         {
@@ -57,6 +63,14 @@ public class UIManager : MonoBehaviour
         timeElapsed += Time.deltaTime;
         timeSpan = TimeSpan.FromSeconds(timeElapsed);
         timeText.text = timeSpan.ToString(@"mm\:ss");
+    }
+
+    public void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+        gameOverScreen.transform.Find("SailText").gameObject.SetActive(true);
+        gameOverScreen.transform.Find("TimeSailedText").gameObject.SetActive(true);
+        gameOverScreen.transform.Find("TimeSailedText").GetComponent<Text>().text = timeText.text;
     }
 
 }

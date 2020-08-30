@@ -10,16 +10,17 @@ public class ButtonMenu : MonoBehaviour
     int totalOptions = 3;
     public float yMovement;
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow) && index < totalOptions - 1)
         {
+            FindObjectOfType<AudioManager>().Play("Sails");
             index++;
             transform.position = new Vector2(transform.position.x, transform.position.y - yMovement);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && index > 0)
         {
+            FindObjectOfType<AudioManager>().Play("Sails");
             index--;
             transform.position = new Vector2(transform.position.x, transform.position.y + yMovement);
         }

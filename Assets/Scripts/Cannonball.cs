@@ -14,13 +14,13 @@ public class Cannonball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-        
+        FindObjectOfType<AudioManager>().Play("Shoot");
     }
 
     
     void Update()
     {
-        rb.AddForce(new Vector2(force, force));
+        rb.AddForce(new Vector2(force, force / 2));
         // rb.AddForce(Vector2.right);
         // rb.AddForce(transform.forward * force);
         // rb.AddForce(Vector2.right * force);
@@ -32,6 +32,7 @@ public class Cannonball : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
 }

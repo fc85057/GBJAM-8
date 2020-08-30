@@ -16,6 +16,7 @@ public class Ship : MonoBehaviour
 
     bool sailsDown;
     bool invincible;
+    float nextAttackTime;
     
     void Start()
     {
@@ -23,6 +24,7 @@ public class Ship : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         barrel = GameObject.Find("Barrel").transform;
+        nextAttackTime = 0f;
 
         sailsDown = true;
     }
@@ -41,7 +43,7 @@ public class Ship : MonoBehaviour
                 sailsDown = true;
                 animator.SetBool("sailsDown", true);
             }
-
+            FindObjectOfType<AudioManager>().Play("Sails");
         }
 
         if (sailsDown)
@@ -77,7 +79,12 @@ public class Ship : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(cannonball, barrel);
+        if (Time.time > nextAttackTime)
+        {
+            Instantiate(cannonball, barrel);
+            nextAttackTime = Time.time + .5f;
+        }
+        
     }
 
     public void TakeDamage(int damage)
@@ -86,6 +93,7 @@ public class Ship : MonoBehaviour
         {
             health -= damage;
             StartCoroutine("PlayDamageAnimation");
+            FindObjectOfType<AudioManager>().Play("Hurt");
         }
     }
 
