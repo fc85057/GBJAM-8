@@ -22,13 +22,14 @@ public class TriggerLoad : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!triggerEntered)
+        if (!triggerEntered && collision.tag == "Player")
         {
             GameObject newBackground = Instantiate(levelPrefab, new Vector3(transform.position.x + 5,
                 transform.position.y, transform.position.z), Quaternion.identity);
             FindObjectOfType<GameManager>().AddBackground(newBackground);
+            triggerEntered = true;
         }
-        triggerEntered = true;
+        
     }
 
 }

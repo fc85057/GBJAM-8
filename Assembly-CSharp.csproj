@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Ship.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\TriggerLoad.cs" />
     <Compile Include="Assets\Scripts\TutorialMenu.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
