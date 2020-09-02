@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
         }
         if (spawnedEnemies.childCount > 12)
         {
-            Destroy(spawnedEnemies.GetChild(0));
+            Destroy(spawnedEnemies.GetChild(0).gameObject);
         }
 
         // Look into removing oldest spawned enemies
